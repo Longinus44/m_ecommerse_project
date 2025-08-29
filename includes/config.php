@@ -1,11 +1,17 @@
 <?php
 // Database configuration
-define('DB_HOST', '127.0.0.1');   // Try 127.0.0.1 instead of localhost
+define('DB_HOST', '127.0.0.1');   // Try 127.0.0.1 fdb1032.awardspace.net
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'ecommerce_app');
+// define('PORT', 3306);
 
-// Site configuration
+// // Site configuration 
+// define('SITE_URL', 'https://4674985_root.awardspace.info');
+// define('SITE_NAME', 'ShopPortal');
+
+
+// Site configuration 
 define('SITE_URL', 'http://localhost/ecommerce-app');
 define('SITE_NAME', 'ShopPortal');
 
@@ -27,8 +33,10 @@ try {
     $conn->set_charset("utf8mb4");
 
 } catch (Exception $e) {
+    echo $e->getMessage();
     error_log("Database connection error: " . $e->getMessage());
     die("Database connection failed. Please try again later.");
+
 }
 
 // Error reporting (disable in production)

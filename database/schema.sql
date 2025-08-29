@@ -1,7 +1,11 @@
 -- E-commerce Portal Database Schema
-CREATE DATABASE IF NOT EXISTS ecommerce_app;
+-- CREATE DATABASE IF NOT EXISTS ecommerce_app;
 
-USE ecommerce_app;
+-- USE ecommerce_app;
+
+-- CREATE DATABASE IF NOT EXISTS if0_39761271_ecommerce_app
+
+USE 4674985_root
 
 -- Users table
 CREATE TABLE users (
@@ -61,7 +65,18 @@ CREATE TABLE orders (
         'delivered',
         'cancelled'
     ) DEFAULT 'pending',
-    shipping_address TEXT,
+    shipping_address TEXT NOT NULL,
+    shipping_name VARCHAR(255) NOT NULL,
+    shipping_email VARCHAR(255) NOT NULL,
+    shipping_phone VARCHAR(50) NOT NULL,
+    merchant_ref VARCHAR(100) UNIQUE,
+    payment_method ENUM(
+        'cod',
+        'card',
+        'bank_transfer',
+        'wallet'
+    ) DEFAULT 'cod',
+    order_notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
